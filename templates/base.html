@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<htmllang="en">
+<head>
+    <metacharset="UTF-8">
+    <metaname="viewport"content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}Flask Platzi |{% endblock %}
+    </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css')}}">
+
+</head>
+<body>
+    <head>
+        {% include 'navbar.html' %}
+    </head>
+    {% block content %}
+    {% endblock %}    
+</body>
+</html>
