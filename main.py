@@ -10,7 +10,7 @@ import unittest
 
 from app import create_app
 from app.forms import LoginForm
-
+from app.firestore_service import get_users
 app = create_app()
 
 
@@ -56,7 +56,7 @@ def hello():
         'login_form': login_form,
         'username': username
     }
-
+    """
     if login_form.validate_on_submit():
         username = login_form.username.data
         session['username'] = username
@@ -64,5 +64,11 @@ def hello():
         flash('Nombre de usario registrado con éxito!')
 
         return redirect(url_for('index'))
+    """
+    users = get_users()
+
+    for user in users:
+        print(user.id)
+        print(user.to_dict()['password'])
 
     return render_template('hello.html', **context)
